@@ -9,7 +9,7 @@
 
 ####DESCRIPTION:
 This was an semester long assignment given to us for the course, 
-`CS-202: Data Structures` course during the academic year 2013-2014, with the aim
+`CS-202: Data Structures` during the academic year 2013-2014, with the aim
 to understand the role of data structures in a software.
 We had referred the chapters corresponding to UFS(Unix File System) from 
 Maurice J. Bach's book, `The Design of the UNIX Operating Systems`.
@@ -44,6 +44,7 @@ For more detailed information, please refer the
 
 - #####Executing the application:
   Enter `make run` to execute `file_system` file present in `bin` directory.
+  To futher help, type `help` in `file_system`'s terminal after executing `make run`. 
 
 
 - #####Clean project:
