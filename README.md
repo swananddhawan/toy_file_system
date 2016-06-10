@@ -44,7 +44,7 @@ For more detailed information, please refer the
 
 - #####Executing the application:
   Enter `make run` to execute `file_system` file present in `bin` directory.
-  To futher help, type `help` in `file_system`'s terminal after executing `make run`. 
+  For futher help, type `help` in `file_system`'s terminal after executing `make run`. 
 
 
 - #####Clean project:
