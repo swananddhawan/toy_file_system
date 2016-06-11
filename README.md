@@ -1,10 +1,10 @@
-#<p style="text-align: center;">Toy File System</p>
+#Toy File System
 
 ####AUTHORS:
 
-- [Laxmi Ahire](https://github.com/laxmisahire02 "Laxmi's github home page")
+- [Laxmi Ahire](https://github.com/laxmisahire02 "Laxmi's github profile")
 
-- [Swanand Dhawan](https://github.com/swananddhawan "Swanand's github home page")
+- [Swanand Dhawan](https://github.com/swananddhawan "Swanand's github profile")
 
 
 ####DESCRIPTION:
