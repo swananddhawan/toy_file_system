@@ -10,6 +10,6 @@ int readFile(int fd, char *buff, int noOfBytes)
 	inodeNumber = (FT[FTentry].inode_number);
 	noOfBytes = readDataInFile(inodeNumber, fd, buff, noOfBytes);
 
-	return (noOfBytes);
+	return noOfBytes;
 
 }

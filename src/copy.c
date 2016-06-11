@@ -14,15 +14,12 @@ int copyFile(int sourceFD, char *destination)
 	DILB[inodeNumber].status = Locked;
 
 	buffer = (char *)malloc(sizeof(char) * DILB[inodeNumber].file_size);
-	cnt =
-	    readDataInFile(inodeNumber, sourceFD, buffer,
-			   DILB[inodeNumber].file_size);
+	cnt = readDataInFile(inodeNumber, sourceFD, buffer, DILB[inodeNumber].file_size);
 
 	destFD = create(destination);
 	printf("\n\tFile descriptor of %s : %d\n", destination, destFD);
 
-	DILB[FT[UA.UFDT[destFD]].inode_number].data =
-	    (char *)malloc(sizeof(char) * DILB[inodeNumber].file_size);
+	DILB[FT[UA.UFDT[destFD]].inode_number].data = (char *)malloc(sizeof(char) * DILB[inodeNumber].file_size);
 	strcpy(DILB[FT[UA.UFDT[destFD]].inode_number].data, buffer);
 	DILB[FT[UA.UFDT[destFD]].inode_number].file_size = cnt;
 

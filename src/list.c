@@ -24,9 +24,8 @@ int ls_1(char *par)
 		for (i = 0; i < NO_OF_FILES_IN_DIR; i++) {
 			if ((AllDir[dirEntry].file[i].inode_number) != -1) {
 				printf("\t%s \t\t %10d\n",
-				       AllDir[dirEntry].file[i].file_name,
-				       DILB[AllDir[dirEntry].file[i].
-					    inode_number].file_size);
+						AllDir[dirEntry].file[i].file_name,
+						DILB[AllDir[dirEntry].file[i].inode_number].file_size);
 				cnt++;
 			}
 		}
@@ -35,8 +34,8 @@ int ls_1(char *par)
 		for (i = 0; i < NO_OF_FILES_IN_DIR; i++) {
 			if ((AllDir[dirEntry].file[i].inode_number) != -1) {
 				printf("\t%3d\t%s \n",
-				       AllDir[dirEntry].file[i].inode_number,
-				       AllDir[dirEntry].file[i].file_name);
+						AllDir[dirEntry].file[i].inode_number,
+						AllDir[dirEntry].file[i].file_name);
 				cnt++;
 			}
 		}
@@ -45,16 +44,14 @@ int ls_1(char *par)
 		for (i = 0; i < NO_OF_FILES_IN_DIR; i++) {
 			if ((AllDir[dirEntry].file[i].inode_number) != -1) {
 				printf("\t%3d %10d \t%s\t\t ",
-				       AllDir[dirEntry].file[i].inode_number,
-				       DILB[AllDir[dirEntry].file[i].inode_number].file_size,
-				       AllDir[dirEntry].file[i].file_name);
+						AllDir[dirEntry].file[i].inode_number,
+						DILB[AllDir[dirEntry].file[i].inode_number].file_size,
+						AllDir[dirEntry].file[i].file_name);
 
-				if (DILB[AllDir[dirEntry].file[i].inode_number].
-				    type == RegularFile)
+				if (DILB[AllDir[dirEntry].file[i].inode_number].type == RegularFile)
 					printf("RegularFile\t");
-				
-				if (DILB[AllDir[dirEntry].file[i].inode_number].
-				    type == Directory)
+
+				if (DILB[AllDir[dirEntry].file[i].inode_number].type == Directory)
 					printf("Directory\t");
 				cnt++;
 			}

@@ -18,8 +18,7 @@ void catFile(char *path)
 		int st = changeDirectory(parameter[j++]);
 		i--;
 		if (st == -1)
-			printf("\n No such directory found %s ",
-			       parameter[j - 1]);
+			printf("\n No such directory found %s ", parameter[j - 1]);
 	}
 
 	if (i == 0)

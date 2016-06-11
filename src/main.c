@@ -11,8 +11,8 @@ void initialize()
 }
 
 char *cmd[] = {"lfs", "mount", "new", "create", "write", "read", "close", "open",
-	       "mkdir", "cd", "stat", "cat", "append", "copy", "ls", "pwd", "rm",
-	       "touch", "clear", "rename", NULL};
+	    "mkdir", "cd", "stat", "cat", "append", "copy", "ls", "pwd", "rm",
+	    "touch", "clear", "rename", NULL};
 
 static char **my_completion(const char *, int, int);
 
@@ -20,14 +20,14 @@ int main(void)
 {
 	int cnt, fd, i = 0, prtEntry = 0, flag = 0, mountFlag = 0, new = 0;
 	char *temp = (char *)malloc(sizeof(char) * 80), *command, **parameter =
-	    NULL, *ptr = NULL;
+	  NULL, *ptr = NULL;
 	char fileName[20];
 
 	/*system ("clear"); */
 	while (1) {
 		char path[200] = "\nhome";
 		const char *p =
-		    strcat((char *)presentWorkingDirectory(path), " # : ");
+		  strcat((char *)presentWorkingDirectory(path), " # : ");
 		cnt = 0;
 		rl_attempted_completion_function = my_completion;
 
@@ -99,7 +99,7 @@ int main(void)
 				exit(0);
 
 			} else
-			    if (strcmp(parameter[0], "stat") == 0 && (cnt == 2))
+			  if (strcmp(parameter[0], "stat") == 0 && (cnt == 2))
 				statistics(parameter[1]);
 
 			else if (strcmp(parameter[0], "pwd") == 0 && (cnt == 1)) {
@@ -107,7 +107,7 @@ int main(void)
 				printf("\n\tPresent Working Diretory Path : %s", (char *)presentWorkingDirectory(path));
 
 			} else if (strcmp(parameter[0], "rename") == 0
-				   && (cnt == 3)) {
+				  && (cnt == 3)) {
 				int status = reName(parameter[1], parameter[2]);
 				if (status == 0)
 					printf ("\n\tFile renamed successfully.\n");
@@ -139,12 +139,12 @@ int main(void)
 				else
 					flag = 1;
 			} else
-			    if (strcmp(parameter[0], "open") == 0 && (cnt == 3))
+			  if (strcmp(parameter[0], "open") == 0 && (cnt == 3))
 			{
 				int fd = openFile(parameter[1], parameter[2]);
 				if (fd != -1)
 					printf ("\n\tFile opened successfully.\n\tFile descriptor for %s is : %d\n",
-					     parameter[1], fd);
+					   parameter[1], fd);
 				else
 					printf ("\n\tFile could not be opened..!!\n");
 			} else if ((strcmp(parameter[0], "ls") == 0) && (cnt == 1 || cnt == 2)) {
@@ -158,17 +158,17 @@ int main(void)
 				else
 					printf("\tTotal Files : %d\n", status);
 			} else
-			    if ((strcmp(parameter[0], "touch") == 0) && (cnt == 3 || cnt == 2)) {
+			  if ((strcmp(parameter[0], "touch") == 0) && (cnt == 3 || cnt == 2)) {
 				int status = 0;
 				if (cnt == 2)
 					status = touch_0(parameter[1]);
 				if (cnt == 3)
 					status =
-					    touch_1(parameter[1], parameter[2]);
+					  touch_1(parameter[1], parameter[2]);
 				if (status == -1)
 					printf("Error occured..!!!\n");
 			} else
-			    if ((strcmp(parameter[0], "create") == 0) && (cnt == 2)) {
+			  if ((strcmp(parameter[0], "create") == 0) && (cnt == 2)) {
 				fd = create(parameter[1]);
 				printf("\tFile descriptor of %s : %d\n", parameter[0], fd);
 			} else if ((strcmp(parameter[0], "copy") == 0) && (cnt == 3)) {
@@ -194,10 +194,10 @@ int main(void)
 				else
 					printf ("Number of bytes successfully written : %d\n", cnt);
 			} 
-			  else if ((strcmp(parameter[0], "read") == 0) && (cnt == 3)) {
+			 else if ((strcmp(parameter[0], "read") == 0) && (cnt == 3)) {
 				cnt = 0;
 				temp = (char *)malloc(sizeof(char) * 80);
-				cnt =  readFile(atoi(parameter[1]), temp, atoi(parameter[2]));
+				cnt = readFile(atoi(parameter[1]), temp, atoi(parameter[2]));
 				if (cnt == -1)
 					printf("Error occured..!!!\n");
 				else {
@@ -205,7 +205,7 @@ int main(void)
 					printf("\t%s\n", temp);
 				}
 			} else
-			    if ((strcmp(parameter[0], "mkdir") == 0) && (cnt == 2))
+			  if ((strcmp(parameter[0], "mkdir") == 0) && (cnt == 2))
 				mkDir(parameter[1]);
 
 			else if ((strcmp(parameter[0], "help") == 0) && (cnt == 1))
@@ -237,7 +237,7 @@ static char **my_completion(const char *text, int start, int end)
 	if (start == 0)
 		matches = rl_completion_matches((char *)text, &my_generator);
 	/* else */
-	/*      rl_bind_key ('\t', rl_abort); */
+	/*   rl_bind_key ('\t', rl_abort); */
 
 	return (matches);
 

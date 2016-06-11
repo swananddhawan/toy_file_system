@@ -10,7 +10,7 @@ void help(void)
 	printf("\t6. read FileDescriptor NumberOfBytesToRead : Number of bytes read\n\n");
 	printf("\t7. close FileDescriptor : File is closed\n\n");
 	printf("\t8. open FileName Mode : FileDescriptor of opened file\n");
-	printf("\t\tMode : (i)R : Open file in read mode\n\t\t    (ii)W : Open file in write mode\n\t\t\t (iii)A : Open file in append mode\n\n");
+	printf("\t\tMode : (i) R: Open file in read mode\n\t\t       (ii) W : Open file in write mode\n\t\t\t(iii) A : Open file in append mode\n\n");
 	printf("\t9. mkdir DirectoryName : Creates new directory in current directory\n\n");
 	printf("\t10. cd Path : Change the current directory.\n\n");
 	printf("\t11. stat FileName : Display statistics of file\n\n");
@@ -41,21 +41,21 @@ int checkFD(int fd)
 int checkMountStatus(int mountFlag, char *parameter)
 {
 	if (mountFlag == 0 &&
-	    ((strcmp(parameter, "create") == 0) ||
-	     (strcmp(parameter, "write")  == 0) ||
-	     (strcmp(parameter, "read")   == 0) ||
-	     (strcmp(parameter, "close")  == 0) ||
-	     (strcmp(parameter, "ls")     == 0) ||
-	     (strcmp(parameter, "pwd")    == 0) ||
-	     (strcmp(parameter, "open")   == 0) ||
-	     (strcmp(parameter, "cat")    == 0) ||
-	     (strcmp(parameter, "stat")   == 0) ||
-	     (strcmp(parameter, "mkdir")  == 0) ||
-	     (strcmp(parameter, "cd")     == 0) ||
-	     (strcmp(parameter, "touch")  == 0) ||
-	     (strcmp(parameter, "append") == 0) ||
-	     (strcmp(parameter, "rm")     == 0) ||
-	     (strcmp(parameter, "copy")   == 0)))
+	  ((strcmp(parameter, "create") == 0) ||
+	   (strcmp(parameter, "write")  == 0) ||
+	   (strcmp(parameter, "read")   == 0) ||
+	   (strcmp(parameter, "close")  == 0) ||
+	   (strcmp(parameter, "ls")     == 0) ||
+	   (strcmp(parameter, "pwd")    == 0) ||
+	   (strcmp(parameter, "open")   == 0) ||
+	   (strcmp(parameter, "cat")    == 0) ||
+	   (strcmp(parameter, "stat")   == 0) ||
+	   (strcmp(parameter, "mkdir")  == 0) ||
+	   (strcmp(parameter, "cd")     == 0) ||
+	   (strcmp(parameter, "touch")  == 0) ||
+	   (strcmp(parameter, "append") == 0) ||
+	   (strcmp(parameter, "rm")     == 0) ||
+	   (strcmp(parameter, "copy")   == 0)))
 		return -1;
 	return 0;
 }
@@ -138,21 +138,18 @@ void initializeDILB()
 
 int appendDataInFile(int inodeNumber, char *buff)
 {
-	DILB[inodeNumber].data =
-	    (char *)realloc(DILB[inodeNumber].data,
-			    (strlen(buff) + DILB[inodeNumber].file_size));
+	DILB[inodeNumber].data = (char *)realloc(DILB[inodeNumber].data, (strlen(buff) + DILB[inodeNumber].file_size));
 
 	if (DILB[inodeNumber].data == NULL)
 		return (-1);
 
-	DILB[inodeNumber].file_size =
-	    (strlen(buff) + DILB[inodeNumber].file_size);
-	DILB[UA.current_working_directory].file_size +=
-	    DILB[inodeNumber].file_size;
+	DILB[inodeNumber].file_size = (strlen(buff) + DILB[inodeNumber].file_size);
+
+	DILB[UA.current_working_directory].file_size += DILB[inodeNumber].file_size;
 
 	if (UA.current_working_directory != UA.current_working_root)
-		DILB[UA.current_working_root].file_size +=
-		    DILB[inodeNumber].file_size;
+		DILB[UA.current_working_root].file_size += DILB[inodeNumber].file_size;
+
 	strcat(DILB[inodeNumber].data, buff);
 
 	return (strlen(buff));
@@ -164,12 +161,13 @@ int writeDataInFile(int inodeNumber, char *buff)
 	DILB[inodeNumber].data = (char *)malloc(strlen(buff));
 	if (DILB[inodeNumber].data == NULL)
 		return (-1);
+
 	DILB[inodeNumber].file_size = (strlen(buff));
-	DILB[UA.current_working_directory].file_size +=
-	    DILB[inodeNumber].file_size;
+	DILB[UA.current_working_directory].file_size += DILB[inodeNumber].file_size;
+
 	if (UA.current_working_directory != UA.current_working_root)
-		DILB[UA.current_working_root].file_size +=
-		    DILB[inodeNumber].file_size;
+		DILB[UA.current_working_root].file_size += DILB[inodeNumber].file_size;
+
 	strcat(DILB[inodeNumber].data, buff);
 	return (strlen(buff));
 }
@@ -199,10 +197,8 @@ int readDataInFile(int inodeNumber, int fd, char *buff, unsigned int noOfByte)
 void changeDirSize(int inodeNumber)
 {
 	if (UA.current_working_root != UA.current_working_directory)
-		DILB[UA.current_working_root].file_size -=
-		    DILB[inodeNumber].file_size;
-	DILB[UA.current_working_directory].file_size -=
-	    DILB[inodeNumber].file_size;
+		DILB[UA.current_working_root].file_size -= DILB[inodeNumber].file_size;
+	DILB[UA.current_working_directory].file_size -= DILB[inodeNumber].file_size;
 	DILB[inodeNumber].file_size = 0;
 	return;
 }
@@ -354,36 +350,28 @@ void insertFileInDir(int inodeNumber, char *fileName)
 	int i, j, k;
 	for (i = 2; i < NO_OF_FILES_IN_DIR; i++) {
 		int dirEntry = getDirEntry(UA.current_working_directory);
+
 		if (AllDir[dirEntry].file[i].inode_number == -1) {
 			AllDir[dirEntry].file[i].inode_number = inodeNumber;
+
 			for (k = 0; k < NO_OF_FILES_IN_DIR; k++) {
-				if (strcmp
-				    (AllDir[dirEntry].file[k].file_name,
-				     fileName) == 0) {
-					printf
-					    ("\n\tGiven file name already exist please give another file \n\tFile name : ");
-					scanf("%s", fileName);
+				if (strcmp (AllDir[dirEntry].file[k].file_name, fileName) == 0) {
+					printf ("\n\tGiven file name already exist please give another file \n\tFile name : ");
+					scanf ("%s", fileName);
 					break;
 				}
 			}
 			strcpy(AllDir[dirEntry].file[i].file_name, fileName);
 
-			if (DILB[AllDir[dirEntry].file[i].inode_number].type ==
-			    Directory) {
+			if (DILB[AllDir[dirEntry].file[i].inode_number].type == Directory) {
 				for (j = 1; j < NO_OF_DIR; j++) {
 					if (AllDir[j].inode_number == -1) {
-						AllDir[j].inode_number =
-						    inodeNumber;
-						AllDir[j].file[0].inode_number =
-						    inodeNumber;
-						AllDir[j].file[1].inode_number =
-						    UA.
-						    current_working_directory;
+						AllDir[j].inode_number = inodeNumber;
+						AllDir[j].file[0].inode_number = inodeNumber;
+						AllDir[j].file[1].inode_number = UA.current_working_directory;
 						mappingWithAllDir(inodeNumber);
-						strcpy(AllDir[j].file[0].
-						       file_name, ".");
-						strcpy(AllDir[j].file[1].
-						       file_name, "..");
+						strcpy(AllDir[j].file[0].file_name, ".");
+						strcpy(AllDir[j].file[1].file_name, "..");
 						return;
 					}
 				}
@@ -425,8 +413,7 @@ int cdpath(char *path)
 		st = changeDirectory(parameter[j++]);
 		i--;
 		if (st == -1) {
-			printf("\n No such directory found %s ",
-			       parameter[j - 1]);
+			printf("\n No such directory found %s ", parameter[j - 1]);
 		}
 	}
 	return st;
@@ -439,8 +426,7 @@ int changeDirectory(char *dirName)
 
 	for (i = 0; i < NO_OF_FILES_IN_DIR; i++) {
 		if (strcmp(AllDir[dirEntry].file[i].file_name, dirName) == 0) {
-			UA.current_working_directory =
-			    AllDir[dirEntry].file[i].inode_number;
+			UA.current_working_directory = AllDir[dirEntry].file[i].inode_number;
 			return i;
 		}
 	}
@@ -454,8 +440,7 @@ int getInodeNumberFromDirectory(char *name)
 
 	for (i = 0; i < NO_OF_DIR; i++) {
 		for (j = 0; j < NO_OF_FILES_IN_DIR; j++) {
-			if (strcmp(AllDir[dirEntry].file[i].file_name, name) ==
-			    0)
+			if (strcmp(AllDir[dirEntry].file[i].file_name, name) == 0)
 				return (AllDir[dirEntry].file[i].inode_number);
 		}
 	}

@@ -38,8 +38,7 @@ int mountFileSystem(char *FileName)
 		else if (DILB[i].type == Directory || DILB[i].type == Free)
 			DILB[i].data = (char *)malloc(sizeof(char) * 2);
 
-		fscanf(filePointer, "%[\nA-Za-z0-9 ., \\\"\'_+?/!@#$%&* ()_+; ]",
-		       DILB[i].data);
+		fscanf(filePointer, "%[\nA-Za-z0-9 ., \\\"\'_+?/!@#$%&* ()_+; ]", DILB[i].data);
 		fscanf(filePointer, "%s", flush);
 	}
 

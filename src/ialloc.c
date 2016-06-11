@@ -5,8 +5,7 @@ int ialloc()
 	int done = 0, inodeNumber;
 	while (!done) {
 		if (isListEmpty()) {
-			SB.remember_inode_number =
-			    fillInodeList(SB.remember_inode_number);
+			SB.remember_inode_number = fillInodeList(SB.remember_inode_number);
 			if (isListEmpty())
 				return (-1);
 		}
