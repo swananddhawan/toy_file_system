@@ -12,9 +12,9 @@ int create(char *fileName)
 
 	if (isUFDTFull()) {
 		printf("\nSorry no free space is available\n");
-		return (-1);
+		return -1;
 	}
 	fd = putFTAddIntoUFDT(FTAdd);
-	return (fd);
+	return fd;
 
 }

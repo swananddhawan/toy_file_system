@@ -19,7 +19,12 @@ int writeFile(int fd)
 	noOfBytes = writeDataInFile(inodeNumber, temp);
 	if (noOfBytes == -1) {
 		printf("\n Unable to write data in file \n");
-		return (-1);
+		return -1;
 	}
+
+	DILB[inodeNumber].last_modified = time(NULL);
+	DILB[inodeNumber].last_accessed = time(NULL);
+	DILB[inodeNumber].inode_modified = time(NULL);
+
 	return noOfBytes;
 }

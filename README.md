@@ -8,18 +8,16 @@
 
 
 ####DESCRIPTION:
-This was an semester long assignment given to us for the course, 
-`CS-202: Data Structures` during the academic year 2013-2014, with the aim
-to understand the role of data structures in a software.
-We had referred the chapters corresponding to UFS(Unix File System) from 
-Maurice J. Bach's book, `The Design of the UNIX Operating Systems`.
+This was a mini project given to us for the course, `CS-202: Data Structures`
+during the academic year 2013-2014, with the aim to understand the role of data
+structures in a software. We had referred the chapters corresponding to UFS
+(Unix File System) from Maurice J. Bach's book, `The Design of the UNIX Operating Systems`.
 
 Our file system images are stored with `.fs` extension.
 We have provided a terminal like interface to access the files in our file
 system as well as our file system.
 
-For more detailed information, please refer the
-[documentation]().
+For more detailed information, please refer the [wiki].
 
 
 ####BUILDING AND USING THE FILE SYSTEM:
@@ -49,3 +47,6 @@ For more detailed information, please refer the
 
 - #####Clean project:
   Enter `make clean` to remove all the object files and the final executable.
+
+
+[wiki]: https://github.com/swananddhawan/toy_file_system/wiki

@@ -25,15 +25,16 @@ int mountFileSystem(char *FileName)
 						       &DILB[i].inode_modified);
 		if (type == 0)
 			DILB[i].type = Free;
-		if (type == 2)
+		else if (type == 2)
 			DILB[i].type = RegularFile;
-		if (type == 1)
+		else if (type == 1)
 			DILB[i].type = Directory;
+
 		if (status == 0)
 			DILB[i].status = Unlocked;
-		if (status == 1)
+		else if (status == 1)
 			DILB[i].status = Locked;
-		if (DILB[i].type == RegularFile)
+		else if (DILB[i].type == RegularFile)
 			DILB[i].data = (char *)malloc(sizeof(char) * DILB[i].file_size);
 		else if (DILB[i].type == Directory || DILB[i].type == Free)
 			DILB[i].data = (char *)malloc(sizeof(char) * 2);

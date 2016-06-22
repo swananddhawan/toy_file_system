@@ -98,9 +98,6 @@ typedef struct
 }FileTable;
 
 void initializeFT ();
-
-
-
 void initializeDILB ();
 void initializeUArea ();
 void initializeSB ();

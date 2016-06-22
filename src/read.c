@@ -10,6 +10,7 @@ int readFile(int fd, char *buff, int noOfBytes)
 	inodeNumber = (FT[FTentry].inode_number);
 	noOfBytes = readDataInFile(inodeNumber, fd, buff, noOfBytes);
 
-	return noOfBytes;
+	DILB[inodeNumber].last_accessed = time(NULL);
 
+	return noOfBytes;
 }
