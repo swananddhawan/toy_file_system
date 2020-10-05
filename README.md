@@ -1,13 +1,13 @@
-#Toy File System
+# Toy File System
 
-####AUTHORS:
+#### AUTHORS:
 
 - [Laxmi Ahire](https://github.com/laxmisahire02 "Laxmi's github profile")
 
 - [Swanand Dhawan](https://github.com/swananddhawan "Swanand's github profile")
 
 
-####DESCRIPTION:
+#### DESCRIPTION:
 This was a mini project given to us for the course, `CS-202: Data Structures`
 during the academic year 2013-2014, with the aim to understand the role of data
 structures in a software. We had referred the chapters corresponding to UFS
@@ -20,9 +20,9 @@ system as well as our file system.
 For more detailed information, please refer the [wiki].
 
 
-####BUILDING AND USING THE FILE SYSTEM:
+#### BUILDING AND USING THE FILE SYSTEM:
 
-- #####Dependency:`libreadline6`
+- ##### Dependency:`libreadline6`
 
   The GNU Readline library provides a set of functions for use
   by applications that allow users to edit command lines as they are typed in.
@@ -34,18 +34,18 @@ For more detailed information, please refer the [wiki].
   *Installing __`libreadline6`__ in Debian based distros:*  `sudo apt-get install libreadline6`
 
 
-- #####Build:
+- ##### Build:
   Type `make` in your terminal/console to build the source code and make the
   executable. The final output i.e. the executable, named *`file_system`* will be installed in 
   `bin` directory.
 
 
-- #####Executing the application:
+- ##### Executing the application:
   Enter `make run` to execute `file_system` file present in `bin` directory.
   For futher help, type `help` in `file_system`'s terminal after executing `make run`. 
 
 
-- #####Clean project:
+- ##### Clean project:
   Enter `make clean` to remove all the object files and the final executable.
 
 
